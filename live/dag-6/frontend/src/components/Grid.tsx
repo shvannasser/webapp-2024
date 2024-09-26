@@ -6,10 +6,11 @@ import AddStudentForm from "./AddStudentForm"
 type GridProps = {
   students: StudentProp[]
   onAddStudent: ({ name }: { name: string }) => void
+  onRemoveStudent: (id: string) => void
 }
 
 export default function Grid(props: GridProps) {
-  const { students, onAddStudent } = props
+  const { students, onAddStudent, onRemoveStudent } = props
 
   // props.students ?? []
   //   const [students, setStudents] = useState<StudentProp[]>(props.students ?? [])
@@ -25,7 +26,12 @@ export default function Grid(props: GridProps) {
       <article className='grid'>
         {students.map((student) => (
           // key brukes for å gjøre at react klarer å vite og skille mellom elementene som lages. Dette er for å kunne vite hvilke elementer som er endret, lagt til eller fjernet. Dette er for å kunne oppdatere DOMen på en effektiv måte.
-          <Student key={student.id} name={student.name} id={student.id} />
+          <Student
+            key={student.id}
+            name={student.name}
+            id={student.id}
+            onRemoveStudent={onRemoveStudent}
+          />
         ))}
       </article>
       <AddStudentForm onAddStudent={onAddStudent} />

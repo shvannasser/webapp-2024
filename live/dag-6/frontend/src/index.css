@@ -95,6 +95,22 @@ h1 {
   }
 }
 
+.add-student-form {
+  position: relative;
+}
+
+.delete-button {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.add-student-form:hover .delete-button {
+  display: block;
+  cursor: pointer;
+}
+
 .avatar {
   display: inline-flex;
   align-items: center;
