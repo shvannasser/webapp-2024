@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+// burde legges som en global component i types mappen
 type AddStudentFormProps = {
   onAddStudent: ({ name }: { name: string }) => void
 }

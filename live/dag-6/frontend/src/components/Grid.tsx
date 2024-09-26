@@ -5,16 +5,20 @@ import AddStudentForm from "./AddStudentForm"
 
 type GridProps = {
   students: StudentProp[]
+  onAddStudent: ({ name }: { name: string }) => void
 }
 
 export default function Grid(props: GridProps) {
-  // props.students ?? []
-  const [students, setStudents] = useState<StudentProp[]>(props.students ?? [])
+  const { students, onAddStudent } = props
 
-  const onAddStudent = (student: { name: string }) => {
-    // one liner under gjøres for å legge til en ny student i listen av studenter, dette for å unngå å mutere state direkte (students.push) og dermed unngå at React ikke oppdager endringen og dermed ikke rerender komponenten (Grid) som er avhengig av students state.
-    setStudents((prev) => [...prev, { id: crypto.randomUUID(), ...student }])
-  }
+  // props.students ?? []
+  //   const [students, setStudents] = useState<StudentProp[]>(props.students ?? [])
+
+  // 	// logikken under er avhengig av state, så kan flyttes til app.tsx
+  //   const onAddStudent = (student: { name: string }) => {
+  //     // one liner under gjøres for å legge til en ny student i listen av studenter, dette for å unngå å mutere state direkte (students.push) og dermed unngå at React ikke oppdager endringen og dermed ikke rerender komponenten (Grid) som er avhengig av students state.
+  //     setStudents((prev) => [...prev, { id: crypto.randomUUID(), ...student }])
+  //   }
 
   return (
     <section>
